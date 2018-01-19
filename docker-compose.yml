@@ -1,0 +1,23 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    #restart: always
+    command: mysqld --sql_mode=""
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: saac
+
+    volumes:  # Mount relative path source folder on host to absolute path destination folder on docker container
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 3307:3306
+
+  adminer:
+    image: adminer
+    #restart: always
+    ports:
+      - 8080:8080
