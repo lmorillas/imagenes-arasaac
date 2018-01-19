@@ -3,5 +3,5 @@ env2
 *pyc
 *bak
 data
-doc
+_doc
 docker-entrypoint-initdb.d
